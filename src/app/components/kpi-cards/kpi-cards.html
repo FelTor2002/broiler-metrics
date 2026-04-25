@@ -1,1 +1,34 @@
-﻿<p>KPI cards pending implementation.</p>
+﻿<div class="kpi-grid">
+  <article class="kpi-card">
+    <span>Mortalidad %</span>
+    <strong>{{ kpis.mortalidad | number: '1.2-2' }}%</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Supervivencia %</span>
+    <strong>{{ kpis.supervivencia | number: '1.2-2' }}%</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Conversión (FCR)</span>
+    <strong>{{ kpis.fcr | number: '1.2-2' }}</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Peso promedio (kg)</span>
+    <strong>{{ kpis.pesoPromedio | number: '1.2-2' }}</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Peso total (kg)</span>
+    <strong>{{ kpis.pesoTotal | number: '1.0-0' }}</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Consumo alimento (kg)</span>
+    <strong>{{ kpis.consumoAlimento | number: '1.0-0' }}</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Utilidad estimada</span>
+    <strong>{{ kpis.utilidad | currency: 'USD' : 'symbol' : '1.0-0' }}</strong>
+  </article>
+  <article class="kpi-card">
+    <span>Margen %</span>
+    <strong>{{ kpis.margen | number: '1.2-2' }}%</strong>
+  </article>
+</div>
