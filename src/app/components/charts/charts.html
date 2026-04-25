@@ -1,6 +1,7 @@
 ﻿<div class="charts-grid">
   <article class="chart-card">
     <h3>{{ t('charts.weightByAge') }}</h3>
+    <p class="chart-help">{{ t('charts.weightByAge.help') }}</p>
     <div class="canvas-wrap">
       <canvas baseChart [data]="lineWeightData" [options]="lineOptions" type="line"></canvas>
     </div>
@@ -8,6 +9,7 @@
 
   <article class="chart-card">
     <h3>{{ t('charts.mortalityByDay') }}</h3>
+    <p class="chart-help">{{ t('charts.mortalityByDay.help') }}</p>
     <div class="canvas-wrap">
       <canvas baseChart [data]="lineMortalityData" [options]="lineOptions" type="line"></canvas>
     </div>
@@ -15,6 +17,7 @@
 
   <article class="chart-card">
     <h3>{{ t('charts.feedByLot') }}</h3>
+    <p class="chart-help">{{ t('charts.feedByLot.help') }}</p>
     <div class="canvas-wrap">
       <canvas baseChart [data]="barFeedData" [options]="barOptions" type="bar"></canvas>
     </div>
@@ -22,6 +25,7 @@
 
   <article class="chart-card">
     <h3>{{ t('charts.fcrByLot') }}</h3>
+    <p class="chart-help">{{ t('charts.fcrByLot.help') }}</p>
     <div class="canvas-wrap">
       <canvas baseChart [data]="barFcrData" [options]="barOptions" type="bar"></canvas>
     </div>
@@ -29,6 +33,7 @@
 
   <article class="chart-card full-width">
     <h3>{{ t('charts.stateDistribution') }}</h3>
+    <p class="chart-help">{{ t('charts.stateDistribution.help') }}</p>
     <div class="canvas-wrap canvas-wrap-small">
       <canvas baseChart [data]="stateDistributionData" [options]="doughnutOptions" type="doughnut"></canvas>
     </div>
