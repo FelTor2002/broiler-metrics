@@ -1,6 +1,6 @@
-﻿{
+{
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "other",
+  "framework": "angular",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/broiler-metrics/browser",
   "rewrites": [
