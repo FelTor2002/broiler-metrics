@@ -3,6 +3,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { CalculatedBroilerRecord } from '../../models/broiler.models';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-charts',
@@ -50,6 +51,12 @@ export class Charts implements OnChanges {
     },
   };
 
+  constructor(private readonly languageService: LanguageService) {}
+
+  t(key: string): string {
+    return this.languageService.translate(key);
+  }
+
   ngOnChanges(): void {
     this.buildCharts();
   }
@@ -62,7 +69,7 @@ export class Charts implements OnChanges {
       labels: labelsByAge,
       datasets: [
         {
-          label: 'Peso promedio (kg)',
+          label: this.t('kpi.avgWeight'),
           data: sortedByAge.map((record) => record.peso_promedio_kg),
           borderColor: '#4ec8ff',
           backgroundColor: 'rgba(78, 200, 255, 0.15)',
@@ -76,7 +83,7 @@ export class Charts implements OnChanges {
       labels: labelsByAge,
       datasets: [
         {
-          label: 'Mortalidad %',
+          label: this.t('kpi.mortality'),
           data: sortedByAge.map((record) => record.mortalidad_porcentaje),
           borderColor: '#ef5b72',
           backgroundColor: 'rgba(239, 91, 114, 0.14)',
@@ -93,7 +100,7 @@ export class Charts implements OnChanges {
       labels: lotes,
       datasets: [
         {
-          label: 'Consumo alimento (kg)',
+          label: this.t('kpi.feed'),
           data: byLote.map((record) => record.alimento_consumido_kg),
           backgroundColor: 'rgba(83, 173, 255, 0.7)',
           borderRadius: 8,
@@ -105,7 +112,7 @@ export class Charts implements OnChanges {
       labels: lotes,
       datasets: [
         {
-          label: 'FCR por lote',
+          label: this.t('kpi.fcr'),
           data: byLote.map((record) => record.fcr),
           backgroundColor: 'rgba(125, 230, 173, 0.7)',
           borderRadius: 8,
@@ -118,7 +125,7 @@ export class Charts implements OnChanges {
     const critical = this.records.filter((record) => record.estado_alerta === 'critical').length;
 
     this.stateDistributionData = {
-      labels: ['Normal', 'Alerta', 'Crítico'],
+      labels: [this.t('status.normal'), this.t('status.alert'), this.t('status.critical')],
       datasets: [
         {
           data: [normal, alert, critical],

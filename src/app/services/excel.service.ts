@@ -16,7 +16,7 @@ export class ExcelService {
     const firstSheetName = workbook.SheetNames[0];
 
     if (!firstSheetName) {
-      throw new Error('El archivo está vacío.');
+      throw new Error('upload.error.empty');
     }
 
     const worksheet = workbook.Sheets[firstSheetName];
@@ -29,7 +29,7 @@ export class ExcelService {
     });
 
     if (!rows.length) {
-      throw new Error('El archivo está vacío.');
+      throw new Error('upload.error.empty');
     }
 
     const records = rows.map((row) => this.toRecord(this.normalizeRowKeys(row)));
@@ -82,7 +82,7 @@ export class ExcelService {
     const hasValidExtension = /\.(xlsx|xls)$/i.test(file.name);
 
     if (!hasValidMimeType && !hasValidExtension) {
-      throw new Error('Formato inválido. Usa archivos .xlsx o .xls.');
+      throw new Error('upload.error.invalidType');
     }
   }
 
@@ -102,7 +102,7 @@ export class ExcelService {
     const missingColumns = REQUIRED_EXCEL_COLUMNS.filter((column) => !headers.includes(column));
 
     if (missingColumns.length) {
-      throw new Error(`Faltan columnas obligatorias: ${missingColumns.join(', ')}`);
+      throw new Error(`upload.error.columns|${missingColumns.join(', ')}`);
     }
   }
 
@@ -153,7 +153,7 @@ export class ExcelService {
 
     if (invalidIndexes.length) {
       const previewRows = invalidIndexes.slice(0, 8).join(', ');
-      throw new Error(`Se encontraron datos inválidos en las filas: ${previewRows}.`);
+      throw new Error(`upload.error.invalidData|${previewRows}`);
     }
   }
 }

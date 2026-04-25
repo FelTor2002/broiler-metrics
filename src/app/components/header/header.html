@@ -1,7 +1,11 @@
 ﻿<header class="header">
   <div>
-    <h1>Broiler Metrics</h1>
-    <p>Analytics dashboard for broiler production</p>
+    <h1>{{ t('app.title') }}</h1>
+    <p>{{ t('app.subtitle') }}</p>
   </div>
-  <div class="language-pill">ES | EN</div>
+  <div class="language-wrap">
+    <span>{{ t('common.language') }}</span>
+    <button type="button" [class.active]="language === 'es'" (click)="setLanguage('es')">ES</button>
+    <button type="button" [class.active]="language === 'en'" (click)="setLanguage('en')">EN</button>
+  </div>
 </header>

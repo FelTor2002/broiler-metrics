@@ -1,8 +1,8 @@
 ﻿<div class="filters-grid">
   <label>
-    Lote
+    {{ t('filters.title.lote') }}
     <select [(ngModel)]="filters.lote" (change)="apply()">
-      <option value="all">Todos</option>
+      <option value="all">{{ t('common.all') }}</option>
       @for (lote of lotes; track lote) {
         <option [value]="lote">{{ lote }}</option>
       }
@@ -10,9 +10,9 @@
   </label>
 
   <label>
-    Galpón
+    {{ t('filters.title.galpon') }}
     <select [(ngModel)]="filters.galpon" (change)="apply()">
-      <option value="all">Todos</option>
+      <option value="all">{{ t('common.all') }}</option>
       @for (galpon of galpones; track galpon) {
         <option [value]="galpon">{{ galpon }}</option>
       }
@@ -20,31 +20,31 @@
   </label>
 
   <label>
-    Fecha inicio
+    {{ t('filters.title.start') }}
     <input type="date" [(ngModel)]="filters.fechaInicio" (change)="apply()" />
   </label>
 
   <label>
-    Fecha fin
+    {{ t('filters.title.end') }}
     <input type="date" [(ngModel)]="filters.fechaFin" (change)="apply()" />
   </label>
 
   <label>
-    Estado
+    {{ t('filters.title.status') }}
     <select [(ngModel)]="filters.estado_alerta" (change)="apply()">
-      <option value="all">Todos</option>
-      <option value="normal">Normal</option>
-      <option value="alert">Alerta</option>
-      <option value="critical">Crítico</option>
+      <option value="all">{{ t('common.all') }}</option>
+      <option value="normal">{{ t('status.normal') }}</option>
+      <option value="alert">{{ t('status.alert') }}</option>
+      <option value="critical">{{ t('status.critical') }}</option>
     </select>
   </label>
 
   <label>
-    Buscar lote/galpón
-    <input type="text" placeholder="Ej: L-101 o A1" [(ngModel)]="filters.busqueda" (input)="apply()" />
+    {{ t('filters.title.search') }}
+    <input type="text" [placeholder]="t('filters.searchPlaceholder')" [(ngModel)]="filters.busqueda" (input)="apply()" />
   </label>
 </div>
 
 <div class="filters-actions">
-  <button type="button" (click)="clear()">Limpiar filtros</button>
+  <button type="button" (click)="clear()">{{ t('common.clearFilters') }}</button>
 </div>

@@ -1,5 +1,6 @@
 ﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BroilerRecord } from '../../models/broiler.models';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -18,6 +19,12 @@ export class FileUpload {
   @Output() clearData = new EventEmitter<void>();
   @Output() loadDemo = new EventEmitter<void>();
   @Output() downloadTemplate = new EventEmitter<void>();
+
+  constructor(private readonly languageService: LanguageService) {}
+
+  t(key: string): string {
+    return this.languageService.translate(key);
+  }
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;

@@ -1,18 +1,18 @@
 ﻿<div class="alert-summary">
-  <span class="chip chip-normal">Normal: {{ normalCount }}</span>
-  <span class="chip chip-alert">Alerta: {{ alertCount }}</span>
-  <span class="chip chip-critical">Crítico: {{ criticalCount }}</span>
+  <span class="chip chip-normal">{{ t('alerts.summary.normal') }}: {{ normalCount }}</span>
+  <span class="chip chip-alert">{{ t('alerts.summary.alert') }}: {{ alertCount }}</span>
+  <span class="chip chip-critical">{{ t('alerts.summary.critical') }}: {{ criticalCount }}</span>
 </div>
 
 @if (!records.length) {
-  <p class="empty-alerts">No hay alertas para mostrar.</p>
+  <p class="empty-alerts">{{ t('alerts.empty') }}</p>
 } @else {
   <div class="alert-list">
     @for (record of records; track record.fecha + record.lote) {
       <article class="alert-card" [class.card-alert]="record.estado_alerta === 'alert'" [class.card-critical]="record.estado_alerta === 'critical'">
         <header>
           <strong>{{ record.lote }} · {{ record.galpon }}</strong>
-          <span>{{ record.estado_alerta }}</span>
+          <span>{{ statusLabel(record.estado_alerta) }}</span>
         </header>
 
         @if (record.alertas.length) {
@@ -22,7 +22,7 @@
             }
           </ul>
         } @else {
-          <p class="ok-message">Operación en rango esperado.</p>
+          <p class="ok-message">{{ t('alerts.ok') }}</p>
         }
       </article>
     }
