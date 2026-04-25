@@ -26,7 +26,7 @@
         <app-kpi-cards [kpis]="kpis" />
       </section>
       <section class="dashboard-alerts">
-        <app-alerts />
+        <app-alerts [records]="filteredRecords" />
       </section>
       <section class="dashboard-charts">
         <app-charts [records]="filteredRecords" />

@@ -1,4 +1,71 @@
-﻿p {
-  margin: 0;
-  color: #9aaccc;
+﻿.alert-summary {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.7rem;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.chip-normal {
+  background: rgba(36, 201, 138, 0.2);
+  color: #6ce0ac;
+}
+
+.chip-alert {
+  background: rgba(243, 199, 72, 0.2);
+  color: #f3c748;
+}
+
+.chip-critical {
+  background: rgba(239, 91, 114, 0.2);
+  color: #ff9bad;
+}
+
+.alert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.7rem;
+}
+
+.alert-card {
+  border-radius: 12px;
+  border: 1px solid rgba(36, 201, 138, 0.35);
+  background: rgba(20, 37, 37, 0.45);
+  padding: 0.7rem;
+}
+
+.card-alert {
+  border-color: rgba(243, 199, 72, 0.5);
+  background: rgba(65, 56, 30, 0.35);
+}
+
+.card-critical {
+  border-color: rgba(239, 91, 114, 0.55);
+  background: rgba(62, 25, 31, 0.35);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+}
+
+li {
+  margin-bottom: 0.2rem;
+  color: #d6deee;
+}
+
+.ok-message,
+.empty-alerts {
+  color: #9db3df;
 }
