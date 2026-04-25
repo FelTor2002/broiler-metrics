@@ -1,78 +1,87 @@
-﻿# Broiler Metrics
+﻿# Insight Board
 
-## ES
+> Dashboard de analítica moderno, bilingüe y responsive construido con Angular + TypeScript.
 
-### Nombre del proyecto
-Broiler Metrics
+[🇪🇸 Español](#-español) | [🇺🇸 English](#-english)
+
+---
+
+## 🇪🇸 Español
 
 ### Descripción
-Dashboard web profesional para analítica productiva y financiera en pollos de engorde. Permite cargar archivos Excel, validar estructura, procesar datos localmente y visualizar KPIs, alertas y gráficos interactivos.
+**Insight Board** es un proyecto de portafolio orientado a frontend, data analytics y UX.
+Incluye una interfaz tipo SaaS con tema oscuro, visualización de KPIs, gráficas interactivas, filtros y vistas adicionales para analítica, reportes y configuración.
 
-### Demo
-Live demo: _pendiente_
+### Demo local
+- URL: `http://localhost:4200`
 
-### Problema que resuelve
-Facilita el seguimiento operativo de lotes avícolas en un panel único, con enfoque en eficiencia alimenticia, mortalidad, rentabilidad y toma de decisiones rápida.
+### Live demo
+- Vercel: [https://insight-board-swart.vercel.app](https://insight-board-swart.vercel.app)
 
-### Funcionalidades
-- Carga de Excel `.xlsx/.xls`
-- Validación de columnas obligatorias
-- Mensajes claros para errores de archivo vacío/formato/datos inválidos
-- Preview de datos cargados
-- Botón para datos demo
-- Descarga de plantilla de Excel
-- Cálculo local de métricas derivadas
-- KPIs operativos y financieros
-- Alertas por lote (normal/alerta/crítico)
-- Filtros por lote, galpón, fecha, estado y búsqueda
-- Tabla de ranking por eficiencia
-- Gráficas interactivas (líneas, barras, doughnut)
-- UI bilingüe ES/EN con persistencia en LocalStorage
-- Layout responsive (desktop/tablet/mobile)
+### Autor
+**Felipe Torres**
 
-### Métricas calculadas
-- mortalidad_%
-- supervivencia_%
-- FCR
-- peso promedio
-- peso total producido
-- consumo de alimento
-- ingresos estimados
-- utilidad estimada
-- margen %
+### Funcionalidades principales
+- Dashboard con KPIs:
+  - Ventas Totales
+  - Usuarios Activos
+  - Tasa de Conversión
+  - Crecimiento de Ingresos
+- Visualización de datos:
+  - Gráfica de línea (ventas mensuales)
+  - Gráfica de barras (ingresos por categoría)
+  - Gráfica doughnut (distribución por canal)
+- Tabla de transacciones:
+  - Columnas: ID, cliente, categoría, monto, estado, fecha
+  - Estados visuales: Completado, Pendiente, Cancelado
+- Filtros:
+  - Por categoría
+  - Por estado
+  - Búsqueda por cliente
+  - Rango de fecha
+- Navegación por secciones (routing):
+  - `Dashboard`
+  - `Analytics`
+  - `Reports`
+  - `Settings`
+- Internacionalización (i18n):
+  - Español / Inglés
+  - Formato de moneda y fecha por locale
+- Exportación:
+  - Reportes mensuales en **XLSX**
 
-### Estructura esperada del Excel
-Columnas obligatorias:
-- `fecha`
-- `lote`
-- `galpon`
-- `edad_dias`
-- `aves_iniciales`
-- `aves_muertas`
-- `peso_promedio_kg`
-- `alimento_consumido_kg`
-- `precio_venta_kg`
-- `costo_alimento`
-- `otros_costos`
-
-### Tecnologías usadas
-- Angular
+### Stack tecnológico
+- Angular (componentes standalone)
 - TypeScript
-- CSS moderno (tema dashboard oscuro)
-- SheetJS (`xlsx`)
-- Chart.js + ng2-charts
-- LocalStorage
+- CSS moderno (variables, layout responsive)
+- Chart.js
+- XLSX (`xlsx`) para exportación de reportes
+- Datos mock locales
 
 ### Estructura del proyecto
-```txt
-src/app/
-  components/
-  services/
-  models/
-  constants/
-  i18n/
-  data/
-  utils/
+```text
+src/
+  app/
+    core/
+      i18n.service.ts
+    components/
+      charts-panel/
+      filter-bar/
+      kpi-card/
+      transactions-table/
+    mock-data/
+      dashboard.data.ts
+    pages/
+      dashboard-page/
+      analytics-page/
+      reports-page/
+      settings-page/
+    types/
+      dashboard.types.ts
+    app.ts
+    app.html
+    app.css
+  styles.css
 ```
 
 ### Instalación
@@ -80,7 +89,7 @@ src/app/
 npm install
 ```
 
-### Ejecución local
+### Ejecutar en local
 ```bash
 npm start
 ```
@@ -90,166 +99,71 @@ npm start
 npm run build
 ```
 
-### Deploy (Vercel)
-1. Importar el repositorio en Vercel.
-2. Framework Preset: Angular.
-3. Build command: `npm run build`.
-4. Output directory: `dist/broiler-metrics/browser`.
-5. Deploy.
+### Tests
+```bash
+npx ng test --watch=false
+```
 
-### Flujo de ramas
-- `main` como rama principal.
-- Ramas por propósito (`feat/*`, `fix/*`, `docs/*`, `chore/*`).
-- Integración progresiva por bloques funcionales.
-
-### Conventional Commits
-Se utiliza convención:
-- `feat:`
-- `fix:`
-- `docs:`
-- `chore:`
-- `refactor:`
-- `merge:`
-
-### Importante
-- El procesamiento es local.
-- No se suben datos a backend.
-- El Excel se usa para análisis operativo de pollos de engorde.
-- Proyecto orientado a portfolio frontend + data visualization.
+### Flujo de ramas y commits recomendado
+Se está usando un enfoque tipo **GitHub Flow + Conventional Commits**:
+- Ramas por propósito: `feat/*`, `fix/*`, `docs/*`
+- Commits claros: `feat: ...`, `fix: ...`, `docs: ...`
+- PR por cambio acotado
 
 ### Mejoras futuras
-- Exportar reportes en PDF
-- Guardar sesiones de análisis
-- Benchmark entre ciclos históricos
-- Tests unitarios/e2e
-
-### Autor
-Felipe Torres
+- Optimizar tamaño del bundle (lazy loading para exportación XLSX)
+- Paginación y ordenamiento en tabla
+- Integración con backend real
+- Exportación adicional (PDF)
+- Autenticación y roles
 
 ---
 
-## EN
+## 🇺🇸 English
 
-### Project name
-Broiler Metrics
+<details>
+  <summary>Open English version</summary>
 
 ### Description
-Professional web dashboard for broiler production and financial analytics. It allows users to upload Excel files, validate structure, process data locally, and visualize KPIs, alerts, and interactive charts.
+**Insight Board** is a portfolio project focused on frontend quality, data analytics, and UX.
+It includes a modern SaaS-like dark UI with KPI cards, interactive charts, filters, and dedicated pages for analytics, reports, and settings.
+
+### Local demo
+- URL: `http://localhost:4200`
 
 ### Live demo
-Live demo: _coming soon_
+- Vercel: [https://insight-board-swart.vercel.app](https://insight-board-swart.vercel.app)
 
-### Problem solved
-Helps poultry operations monitor broiler lot performance in a single dashboard focused on feed efficiency, mortality, profitability, and fast decision-making.
+### Author
+**Felipe Torres**
 
-### Features
-- Excel upload `.xlsx/.xls`
-- Required-column validation
-- Clear error messages (empty file/invalid format/invalid rows)
-- Uploaded data preview
-- Demo dataset quick load
-- Downloadable Excel template
-- Local derived-metrics engine
-- Operational and financial KPIs
-- Alert engine per lot (normal/alert/critical)
-- Filters by lot, shed, date range, status, and search
-- Efficiency ranking table
-- Interactive charts (line, bar, doughnut)
-- Bilingual UI (ES/EN) with LocalStorage persistence
-- Responsive dashboard layout
+### Main features
+- KPI dashboard (Total Sales, Active Users, Conversion Rate, Revenue Growth)
+- Charts (line, bar, doughnut)
+- Transactions table with status badges
+- Filters (category, status, customer search, date range)
+- Routed sections (`Dashboard`, `Analytics`, `Reports`, `Settings`)
+- Bilingual UI (Spanish/English) with locale-aware formats
+- Monthly report export in **XLSX**
 
-### Calculated metrics
-- mortality_%
-- survival_%
-- FCR
-- average weight
-- total produced weight
-- feed consumption
-- estimated revenue
-- estimated profit
-- margin %
-
-### Expected Excel structure
-Required columns:
-- `fecha`
-- `lote`
-- `galpon`
-- `edad_dias`
-- `aves_iniciales`
-- `aves_muertas`
-- `peso_promedio_kg`
-- `alimento_consumido_kg`
-- `precio_venta_kg`
-- `costo_alimento`
-- `otros_costos`
-
-### Technologies
-- Angular
+### Tech stack
+- Angular (standalone components)
 - TypeScript
-- Modern CSS (dark SaaS dashboard)
-- SheetJS (`xlsx`)
-- Chart.js + ng2-charts
-- LocalStorage
-
-### Project structure
-```txt
-src/app/
-  components/
-  services/
-  models/
-  constants/
-  i18n/
-  data/
-  utils/
-```
+- Modern CSS
+- Chart.js
+- XLSX (`xlsx`) for report export
+- Local mock data
 
 ### Setup
 ```bash
 npm install
-```
-
-### Local development
-```bash
 npm start
 ```
 
-### Build
+### Build and test
 ```bash
 npm run build
+npx ng test --watch=false
 ```
 
-### Deployment (Vercel)
-1. Import repository in Vercel.
-2. Framework Preset: Angular.
-3. Build command: `npm run build`.
-4. Output directory: `dist/broiler-metrics/browser`.
-5. Deploy.
-
-### Branch workflow
-- `main` as default branch.
-- Purpose-based branches (`feat/*`, `fix/*`, `docs/*`, `chore/*`).
-- Progressive integration by functional blocks.
-
-### Conventional Commits
-Convention used:
-- `feat:`
-- `fix:`
-- `docs:`
-- `chore:`
-- `refactor:`
-- `merge:`
-
-### Important
-- Processing is local.
-- No data is sent to any backend.
-- Excel is used for broiler operational analytics.
-- Portfolio-focused project for frontend + data visualization.
-
-### Future improvements
-- PDF export
-- Saved analysis sessions
-- Historical-cycle benchmarking
-- Unit and e2e tests
-
-### Author
-Felipe Torres
+</details>
