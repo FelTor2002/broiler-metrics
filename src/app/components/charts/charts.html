@@ -1,1 +1,36 @@
-﻿<p>Charts section pending implementation.</p>
+﻿<div class="charts-grid">
+  <article class="chart-card">
+    <h3>Peso promedio por edad</h3>
+    <div class="canvas-wrap">
+      <canvas baseChart [data]="lineWeightData" [options]="lineOptions" type="line"></canvas>
+    </div>
+  </article>
+
+  <article class="chart-card">
+    <h3>Mortalidad por día</h3>
+    <div class="canvas-wrap">
+      <canvas baseChart [data]="lineMortalityData" [options]="lineOptions" type="line"></canvas>
+    </div>
+  </article>
+
+  <article class="chart-card">
+    <h3>Consumo de alimento por lote</h3>
+    <div class="canvas-wrap">
+      <canvas baseChart [data]="barFeedData" [options]="barOptions" type="bar"></canvas>
+    </div>
+  </article>
+
+  <article class="chart-card">
+    <h3>FCR por lote</h3>
+    <div class="canvas-wrap">
+      <canvas baseChart [data]="barFcrData" [options]="barOptions" type="bar"></canvas>
+    </div>
+  </article>
+
+  <article class="chart-card full-width">
+    <h3>Distribución por estado</h3>
+    <div class="canvas-wrap canvas-wrap-small">
+      <canvas baseChart [data]="stateDistributionData" [options]="doughnutOptions" type="doughnut"></canvas>
+    </div>
+  </article>
+</div>
