@@ -44,3 +44,14 @@ export interface KpiMetric {
   unit?: string;
   trend?: 'up' | 'down' | 'flat';
 }
+
+export interface DashboardKpis {
+  mortalidad: number;
+  supervivencia: number;
+  fcr: number;
+  pesoPromedio: number;
+  pesoTotal: number;
+  consumoAlimento: number;
+  utilidad: number;
+  margen: number;
+}
