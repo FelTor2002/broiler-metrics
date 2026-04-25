@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-empty-state',
@@ -6,4 +6,6 @@
   templateUrl: './empty-state.html',
   styleUrl: './empty-state.css',
 })
-export class EmptyState {}
+export class EmptyState {
+  @Output() loadDemo = new EventEmitter<void>();
+}
