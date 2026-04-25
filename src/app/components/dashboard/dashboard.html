@@ -1,0 +1,31 @@
+﻿<div class="dashboard-layout">
+  <app-header />
+
+  <main class="dashboard-main">
+    <section class="dashboard-upload">
+      <app-file-upload />
+    </section>
+
+    @if (!hasData) {
+      <app-empty-state />
+    } @else {
+      <section class="dashboard-filters">
+        <app-filters />
+      </section>
+      <section class="dashboard-kpis">
+        <app-kpi-cards />
+      </section>
+      <section class="dashboard-alerts">
+        <app-alerts />
+      </section>
+      <section class="dashboard-charts">
+        <app-charts />
+      </section>
+      <section class="dashboard-table">
+        <app-data-table />
+      </section>
+    }
+  </main>
+
+  <app-footer />
+</div>

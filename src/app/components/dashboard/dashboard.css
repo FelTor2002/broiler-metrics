@@ -1,0 +1,32 @@
+﻿:host {
+  display: block;
+}
+
+.dashboard-layout {
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(80, 150, 255, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 0%, rgba(37, 185, 137, 0.14), transparent 32%),
+    #0b111b;
+  color: #d6deee;
+}
+
+.dashboard-main {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: 1.2rem 0 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard-upload,
+.dashboard-filters,
+.dashboard-kpis,
+.dashboard-alerts,
+.dashboard-charts,
+.dashboard-table {
+  background: rgba(14, 23, 36, 0.86);
+  border: 1px solid rgba(156, 173, 204, 0.22);
+  border-radius: 16px;
+  padding: 1rem;
+}
