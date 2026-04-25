@@ -1,1 +1,32 @@
-﻿<p>Ranking table pending implementation.</p>
+﻿<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lote</th>
+        <th>Galpón</th>
+        <th>FCR</th>
+        <th>Margen %</th>
+        <th>Utilidad</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (record of records; track record.fecha + record.lote; let index = $index) {
+        <tr>
+          <td>{{ index + 1 }}</td>
+          <td>{{ record.lote }}</td>
+          <td>{{ record.galpon }}</td>
+          <td>{{ record.fcr | number: '1.2-2' }}</td>
+          <td>{{ record.margen_porcentaje | number: '1.2-2' }}%</td>
+          <td>{{ record.utilidad_estimada | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td>
+            <span class="state" [class.state-alert]="record.estado_alerta === 'alert'" [class.state-critical]="record.estado_alerta === 'critical'">
+              {{ record.estado_alerta }}
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
