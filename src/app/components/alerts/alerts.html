@@ -4,11 +4,26 @@
   <span class="chip chip-critical">{{ t('alerts.summary.critical') }}: {{ criticalCount }}</span>
 </div>
 
+<div class="alert-tabs">
+  <button type="button" class="tab" [class.active]="selectedTab === 'all'" (click)="setTab('all')">
+    {{ t('alerts.tab.all') }} ({{ tabCountAll }})
+  </button>
+  <button type="button" class="tab" [class.active]="selectedTab === 'critical'" (click)="setTab('critical')">
+    {{ t('alerts.tab.critical') }} ({{ criticalCount }})
+  </button>
+  <button type="button" class="tab" [class.active]="selectedTab === 'alert'" (click)="setTab('alert')">
+    {{ t('alerts.tab.alert') }} ({{ alertCount }})
+  </button>
+  <button type="button" class="tab" [class.active]="selectedTab === 'normal'" (click)="setTab('normal')">
+    {{ t('alerts.tab.normal') }} ({{ normalCount }})
+  </button>
+</div>
+
 @if (!records.length) {
   <p class="empty-alerts">{{ t('alerts.empty') }}</p>
 } @else {
   <div class="alert-list">
-    @for (record of records; track record.fecha + record.lote) {
+    @for (record of visibleRecords; track record.fecha + record.lote) {
       <article class="alert-card" [class.card-alert]="record.estado_alerta === 'alert'" [class.card-critical]="record.estado_alerta === 'critical'">
         <header>
           <strong>{{ record.lote }} · {{ record.galpon }}</strong>
@@ -27,4 +42,10 @@
       </article>
     }
   </div>
+
+  @if (hasMore) {
+    <div class="alerts-actions">
+      <button type="button" class="more-button" (click)="showMore()">{{ t('alerts.showMore') }}</button>
+    </div>
+  }
 }

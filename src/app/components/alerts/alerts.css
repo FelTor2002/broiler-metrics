@@ -26,6 +26,28 @@
   color: #ff9bad;
 }
 
+.alert-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.tab {
+  border: 1px solid rgba(152, 171, 205, 0.35);
+  background: rgba(18, 28, 44, 0.85);
+  color: #c9d8f6;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  border-color: rgba(98, 165, 255, 0.8);
+  background: rgba(43, 95, 175, 0.45);
+}
+
 .alert-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -68,4 +90,19 @@ li {
 .ok-message,
 .empty-alerts {
   color: #9db3df;
+}
+
+.alerts-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.85rem;
+}
+
+.more-button {
+  border: 1px solid rgba(129, 162, 214, 0.42);
+  background: rgba(25, 39, 62, 0.85);
+  color: #dbe7ff;
+  border-radius: 10px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
 }
