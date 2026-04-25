@@ -39,6 +39,7 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'upload.error.invalidType': 'Formato inválido. Usa archivos .xlsx o .xls.',
     'upload.error.columns': ({ missing }) => `Faltan columnas obligatorias: ${missing}`,
     'upload.error.invalidData': ({ rows }) => `Se encontraron datos inválidos en las filas: ${rows}.`,
+    'upload.error.generic': 'No fue posible procesar el archivo. Verifica el formato e inténtalo de nuevo.',
 
     'filters.title.lote': 'Lote',
     'filters.title.galpon': 'Galpón',
@@ -109,6 +110,7 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'upload.error.invalidType': 'Invalid format. Use .xlsx or .xls files.',
     'upload.error.columns': ({ missing }) => `Missing required columns: ${missing}`,
     'upload.error.invalidData': ({ rows }) => `Invalid data found in rows: ${rows}.`,
+    'upload.error.generic': 'Unable to process the file. Please verify the format and try again.',
 
     'filters.title.lote': 'Lot',
     'filters.title.galpon': 'Shed',

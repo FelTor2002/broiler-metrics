@@ -150,6 +150,7 @@ export class Dashboard {
       return this.t(code, { rows: payload ?? '-' });
     }
 
-    return this.t(code);
+    const translated = this.t(code);
+    return translated === code ? this.t('upload.error.generic') : translated;
   }
 }

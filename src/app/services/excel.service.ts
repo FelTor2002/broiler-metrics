@@ -23,16 +23,20 @@ export class ExcelService {
     const headers = this.extractHeaders(worksheet);
     this.validateRequiredColumns(headers);
 
-    const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet, {
+    const rawRows = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet, {
       defval: '',
       raw: false,
     });
+
+    const rows = rawRows
+      .map((row) => this.normalizeRowKeys(row))
+      .filter((row) => REQUIRED_EXCEL_COLUMNS.some((column) => String(row[column] ?? '').trim() !== ''));
 
     if (!rows.length) {
       throw new Error('upload.error.empty');
     }
 
-    const records = rows.map((row) => this.toRecord(this.normalizeRowKeys(row)));
+    const records = rows.map((row) => this.toRecord(row));
     this.validateRows(records);
 
     return records;
@@ -115,9 +119,9 @@ export class ExcelService {
 
   private toRecord(row: Record<string, unknown>): BroilerRecord {
     return {
-      fecha: String(row['fecha'] ?? ''),
-      lote: String(row['lote'] ?? ''),
-      galpon: String(row['galpon'] ?? ''),
+      fecha: String(row['fecha'] ?? '').trim(),
+      lote: String(row['lote'] ?? '').trim(),
+      galpon: String(row['galpon'] ?? '').trim(),
       edad_dias: safeNumber(row['edad_dias']),
       aves_iniciales: safeNumber(row['aves_iniciales']),
       aves_muertas: safeNumber(row['aves_muertas']),
