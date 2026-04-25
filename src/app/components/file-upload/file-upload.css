@@ -1,8 +1,93 @@
-﻿h2 {
+﻿:host {
+  display: block;
+}
+
+.upload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+h2 {
   margin: 0 0 0.25rem;
 }
 
 p {
   margin: 0;
+}
+
+.upload-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  border: 1px solid rgba(156, 173, 204, 0.35);
+  background: rgba(24, 34, 52, 0.9);
+  color: #d6deee;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.button:hover {
+  border-color: rgba(133, 183, 255, 0.8);
+}
+
+.button-primary {
+  background: linear-gradient(120deg, #2f7bff, #36b8a4);
+  border: none;
+  color: #f7fcff;
+}
+
+.button-danger {
+  border-color: rgba(242, 109, 125, 0.55);
+}
+
+.status {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.status-loading {
+  color: #9eb2d9;
+}
+
+.status-error {
+  color: #ff8e9f;
+}
+
+.status-success {
+  color: #70e2ad;
+}
+
+.file-name {
+  margin-top: 0.55rem;
   color: #9aaccc;
+}
+
+.preview-table-wrapper {
+  margin-top: 0.85rem;
+  overflow-x: auto;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.preview-table th,
+.preview-table td {
+  border-bottom: 1px solid rgba(155, 173, 205, 0.2);
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+}
+
+.preview-table th {
+  color: #8fb4ff;
 }

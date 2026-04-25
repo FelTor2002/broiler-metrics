@@ -1,2 +1,68 @@
-﻿<h2>Excel Upload</h2>
-<p>Upload flow will be implemented in the next block.</p>
+﻿<div class="upload-header">
+  <div>
+    <h2>Excel Upload</h2>
+    <p>Upload broiler production records in .xlsx or .xls format.</p>
+  </div>
+
+  <div class="upload-actions">
+    <label class="button button-primary" for="excelFileInput">
+      {{ selectedFileName ? 'Change file' : 'Select file' }}
+    </label>
+    <button class="button" type="button" (click)="loadDemo.emit()">Load demo data</button>
+    <button class="button" type="button" (click)="downloadTemplate.emit()">Download template</button>
+    @if (selectedFileName || previewRecords.length) {
+      <button class="button button-danger" type="button" (click)="clearData.emit()">Clear</button>
+    }
+  </div>
+</div>
+
+<input id="excelFileInput" type="file" accept=".xlsx,.xls" (change)="onFileChange($event)" hidden />
+
+@if (loading) {
+  <p class="status status-loading">Loading file...</p>
+}
+
+@if (errorMessage) {
+  <p class="status status-error">{{ errorMessage }}</p>
+}
+
+@if (successMessage) {
+  <p class="status status-success">{{ successMessage }}</p>
+}
+
+@if (selectedFileName) {
+  <p class="file-name">Loaded file: <strong>{{ selectedFileName }}</strong></p>
+}
+
+@if (previewRecords.length) {
+  <div class="preview-table-wrapper">
+    <table class="preview-table">
+      <thead>
+        <tr>
+          <th>fecha</th>
+          <th>lote</th>
+          <th>galpon</th>
+          <th>edad_dias</th>
+          <th>aves_iniciales</th>
+          <th>aves_muertas</th>
+          <th>peso_promedio_kg</th>
+          <th>alimento_consumido_kg</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (record of previewRecords.slice(0, 8); track record.fecha + record.lote + record.galpon) {
+          <tr>
+            <td>{{ record.fecha }}</td>
+            <td>{{ record.lote }}</td>
+            <td>{{ record.galpon }}</td>
+            <td>{{ record.edad_dias }}</td>
+            <td>{{ record.aves_iniciales }}</td>
+            <td>{{ record.aves_muertas }}</td>
+            <td>{{ record.peso_promedio_kg }}</td>
+            <td>{{ record.alimento_consumido_kg }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

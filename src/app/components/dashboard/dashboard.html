@@ -3,11 +3,21 @@
 
   <main class="dashboard-main">
     <section class="dashboard-upload">
-      <app-file-upload />
+      <app-file-upload
+        [selectedFileName]="selectedFileName"
+        [loading]="loading"
+        [errorMessage]="errorMessage"
+        [successMessage]="successMessage"
+        [previewRecords]="records"
+        (fileSelected)="onFileSelected($event)"
+        (clearData)="onClearData()"
+        (loadDemo)="onLoadDemo()"
+        (downloadTemplate)="onDownloadTemplate()"
+      />
     </section>
 
     @if (!hasData) {
-      <app-empty-state />
+      <app-empty-state (loadDemo)="onLoadDemo()" />
     } @else {
       <section class="dashboard-filters">
         <app-filters />
