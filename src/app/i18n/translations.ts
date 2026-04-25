@@ -90,6 +90,14 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'table.title': 'Ranking de lotes por eficiencia',
     'table.help':
       'Ordena los lotes por margen y desempeño operativo para priorizar análisis de productividad y rentabilidad.',
+    'table.filter.all': 'Todos',
+    'table.filter.normal': 'Normal',
+    'table.filter.alert': 'Alerta',
+    'table.filter.critical': 'Crítico',
+    'table.rowsPerPage': 'Filas por página',
+    'table.prev': 'Anterior',
+    'table.next': 'Siguiente',
+    'table.page': 'Página',
   },
   en: {
     'app.title': 'Broiler Metrics',
@@ -174,6 +182,14 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'table.title': 'Lot efficiency ranking',
     'table.help':
       'Sorts lots by margin and operational performance to prioritize productivity and profitability analysis.',
+    'table.filter.all': 'All',
+    'table.filter.normal': 'Normal',
+    'table.filter.alert': 'Alert',
+    'table.filter.critical': 'Critical',
+    'table.rowsPerPage': 'Rows per page',
+    'table.prev': 'Previous',
+    'table.next': 'Next',
+    'table.page': 'Page',
   },
 };
 
