@@ -3,6 +3,30 @@
   <p>{{ t('table.help') }}</p>
 </section>
 
+<section class="table-controls">
+  <div class="status-filters">
+    <button type="button" class="chip" [class.active]="selectedStatus === 'all'" (click)="setStatus('all')">
+      {{ t('table.filter.all') }}
+    </button>
+    <button type="button" class="chip" [class.active]="selectedStatus === 'critical'" (click)="setStatus('critical')">
+      {{ t('table.filter.critical') }}
+    </button>
+    <button type="button" class="chip" [class.active]="selectedStatus === 'alert'" (click)="setStatus('alert')">
+      {{ t('table.filter.alert') }}
+    </button>
+    <button type="button" class="chip" [class.active]="selectedStatus === 'normal'" (click)="setStatus('normal')">
+      {{ t('table.filter.normal') }}
+    </button>
+  </div>
+
+  <div class="page-size">
+    <span>{{ t('table.rowsPerPage') }}</span>
+    @for (size of pageSizeOptions; track size) {
+      <button type="button" class="size-btn" [class.active]="pageSize === size" (click)="setPageSize(size)">{{ size }}</button>
+    }
+  </div>
+</section>
+
 <div class="table-wrapper">
   <table>
     <thead>
@@ -17,9 +41,9 @@
       </tr>
     </thead>
     <tbody>
-      @for (record of records; track record.fecha + record.lote; let index = $index) {
+      @for (record of pagedRecords; track record.fecha + record.lote) {
         <tr>
-          <td>{{ index + 1 }}</td>
+          <td>{{ globalRank(record) }}</td>
           <td>{{ record.lote }}</td>
           <td>{{ record.galpon }}</td>
           <td>{{ record.fcr | number: '1.2-2' }}</td>
@@ -35,3 +59,9 @@
     </tbody>
   </table>
 </div>
+
+<section class="table-pagination">
+  <button type="button" (click)="previousPage()" [disabled]="page <= 1">{{ t('table.prev') }}</button>
+  <span>{{ t('table.page') }} {{ page }} / {{ totalPages }}</span>
+  <button type="button" (click)="nextPage()" [disabled]="page >= totalPages">{{ t('table.next') }}</button>
+</section>
