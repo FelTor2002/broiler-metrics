@@ -59,10 +59,15 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'kpi.margin': 'Margen %',
 
     'charts.weightByAge': 'Peso promedio por edad',
+    'charts.weightByAge.help': 'Evolución del peso promedio (kg) según edad en días por registros cargados.',
     'charts.mortalityByDay': 'Mortalidad por día',
+    'charts.mortalityByDay.help': 'Porcentaje de mortalidad registrado por edad/día para detectar desviaciones tempranas.',
     'charts.feedByLot': 'Consumo de alimento por lote',
+    'charts.feedByLot.help': 'Compara el consumo total de alimento (kg) entre lotes.',
     'charts.fcrByLot': 'FCR por lote',
+    'charts.fcrByLot.help': 'Muestra la eficiencia alimenticia (menor FCR suele indicar mejor desempeño).',
     'charts.stateDistribution': 'Distribución por estado',
+    'charts.stateDistribution.help': 'Distribución de lotes entre estados Normal, Alerta y Crítico.',
 
     'alerts.summary.normal': 'Normal',
     'alerts.summary.alert': 'Alerta',
@@ -77,6 +82,9 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'table.margin': 'Margen %',
     'table.profit': 'Utilidad',
     'table.status': 'Estado',
+    'table.title': 'Ranking de lotes por eficiencia',
+    'table.help':
+      'Ordena los lotes por margen y desempeño operativo para priorizar análisis de productividad y rentabilidad.',
   },
   en: {
     'app.title': 'Broiler Metrics',
@@ -130,10 +138,15 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'kpi.margin': 'Margin %',
 
     'charts.weightByAge': 'Average weight by age',
+    'charts.weightByAge.help': 'Average weight trend (kg) by age in days across uploaded records.',
     'charts.mortalityByDay': 'Mortality by day',
+    'charts.mortalityByDay.help': 'Daily/age mortality percentage to quickly identify early performance deviations.',
     'charts.feedByLot': 'Feed consumption by lot',
+    'charts.feedByLot.help': 'Compares total feed consumption (kg) across lots.',
     'charts.fcrByLot': 'FCR by lot',
+    'charts.fcrByLot.help': 'Shows feed efficiency by lot (lower FCR usually indicates better performance).',
     'charts.stateDistribution': 'State distribution',
+    'charts.stateDistribution.help': 'Distribution of lots across Normal, Alert, and Critical states.',
 
     'alerts.summary.normal': 'Normal',
     'alerts.summary.alert': 'Alert',
@@ -148,6 +161,9 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'table.margin': 'Margin %',
     'table.profit': 'Profit',
     'table.status': 'Status',
+    'table.title': 'Lot efficiency ranking',
+    'table.help':
+      'Sorts lots by margin and operational performance to prioritize productivity and profitability analysis.',
   },
 };
 

@@ -1,4 +1,19 @@
-﻿.table-wrapper {
+﻿.table-info {
+  margin-bottom: 0.6rem;
+}
+
+.table-info h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.table-info p {
+  margin: 0.35rem 0 0;
+  color: #9db3df;
+  font-size: 0.82rem;
+}
+
+.table-wrapper {
   overflow-x: auto;
 }
 

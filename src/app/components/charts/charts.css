@@ -12,8 +12,15 @@
 }
 
 .chart-card h3 {
-  margin: 0 0 0.6rem;
+  margin: 0;
   font-size: 0.95rem;
+}
+
+.chart-help {
+  margin: 0.4rem 0 0.8rem;
+  color: #9db3df;
+  font-size: 0.8rem;
+  line-height: 1.3;
 }
 
 .canvas-wrap {
