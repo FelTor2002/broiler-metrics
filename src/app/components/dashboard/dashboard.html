@@ -20,7 +20,7 @@
       <app-empty-state (loadDemo)="onLoadDemo()" />
     } @else {
       <section class="dashboard-filters">
-        <app-filters />
+        <app-filters [records]="calculatedRecords" [filters]="filters" (filtersChange)="onFiltersChange($event)" />
       </section>
       <section class="dashboard-kpis">
         <app-kpi-cards [kpis]="kpis" />
@@ -29,10 +29,10 @@
         <app-alerts />
       </section>
       <section class="dashboard-charts">
-        <app-charts [records]="calculatedRecords" />
+        <app-charts [records]="filteredRecords" />
       </section>
       <section class="dashboard-table">
-        <app-data-table />
+        <app-data-table [records]="filteredRecords" />
       </section>
     }
   </main>

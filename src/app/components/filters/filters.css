@@ -1,4 +1,34 @@
-﻿p {
-  margin: 0;
-  color: #9aaccc;
+﻿.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.65rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  color: #9bb1d9;
+  font-size: 0.82rem;
+}
+
+select,
+input {
+  border-radius: 9px;
+  border: 1px solid rgba(148, 166, 198, 0.3);
+  background: rgba(14, 23, 36, 0.85);
+  color: #d6deee;
+  padding: 0.45rem 0.55rem;
+}
+
+.filters-actions {
+  margin-top: 0.65rem;
+}
+
+button {
+  border-radius: 9px;
+  border: 1px solid rgba(148, 166, 198, 0.3);
+  background: rgba(24, 34, 52, 0.9);
+  color: #d6deee;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
 }

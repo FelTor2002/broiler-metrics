@@ -1,1 +1,50 @@
-﻿<p>Filters pending implementation.</p>
+﻿<div class="filters-grid">
+  <label>
+    Lote
+    <select [(ngModel)]="filters.lote" (change)="apply()">
+      <option value="all">Todos</option>
+      @for (lote of lotes; track lote) {
+        <option [value]="lote">{{ lote }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Galpón
+    <select [(ngModel)]="filters.galpon" (change)="apply()">
+      <option value="all">Todos</option>
+      @for (galpon of galpones; track galpon) {
+        <option [value]="galpon">{{ galpon }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Fecha inicio
+    <input type="date" [(ngModel)]="filters.fechaInicio" (change)="apply()" />
+  </label>
+
+  <label>
+    Fecha fin
+    <input type="date" [(ngModel)]="filters.fechaFin" (change)="apply()" />
+  </label>
+
+  <label>
+    Estado
+    <select [(ngModel)]="filters.estado_alerta" (change)="apply()">
+      <option value="all">Todos</option>
+      <option value="normal">Normal</option>
+      <option value="alert">Alerta</option>
+      <option value="critical">Crítico</option>
+    </select>
+  </label>
+
+  <label>
+    Buscar lote/galpón
+    <input type="text" placeholder="Ej: L-101 o A1" [(ngModel)]="filters.busqueda" (input)="apply()" />
+  </label>
+</div>
+
+<div class="filters-actions">
+  <button type="button" (click)="clear()">Limpiar filtros</button>
+</div>

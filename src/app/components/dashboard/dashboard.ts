@@ -9,7 +9,7 @@ import { Filters } from '../filters/filters';
 import { Footer } from '../footer/footer';
 import { Header } from '../header/header';
 import { KpiCards } from '../kpi-cards/kpi-cards';
-import { BroilerRecord, CalculatedBroilerRecord, DashboardKpis } from '../../models/broiler.models';
+import { BroilerRecord, CalculatedBroilerRecord, DashboardFilters, DashboardKpis } from '../../models/broiler.models';
 import { ExcelService } from '../../services/excel.service';
 import { MetricsService } from '../../services/metrics.service';
 
@@ -26,6 +26,15 @@ export class Dashboard {
   successMessage = '';
   records: BroilerRecord[] = [];
   calculatedRecords: CalculatedBroilerRecord[] = [];
+  filteredRecords: CalculatedBroilerRecord[] = [];
+  filters: DashboardFilters = {
+    lote: 'all',
+    galpon: 'all',
+    fechaInicio: '',
+    fechaFin: '',
+    estado_alerta: 'all',
+    busqueda: '',
+  };
   kpis: DashboardKpis = {
     mortalidad: 0,
     supervivencia: 0,
@@ -59,6 +68,7 @@ export class Dashboard {
     } catch (error) {
       this.records = [];
       this.calculatedRecords = [];
+      this.filteredRecords = [];
       this.selectedFileName = '';
       this.errorMessage = error instanceof Error ? error.message : 'Unknown Excel parsing error.';
     } finally {
@@ -76,6 +86,7 @@ export class Dashboard {
   onClearData(): void {
     this.records = [];
     this.calculatedRecords = [];
+    this.filteredRecords = [];
     this.selectedFileName = '';
     this.errorMessage = '';
     this.successMessage = '';
@@ -85,9 +96,36 @@ export class Dashboard {
     this.excelService.downloadTemplate();
   }
 
+  onFiltersChange(filters: DashboardFilters): void {
+    this.filters = filters;
+    this.applyFilters();
+  }
+
   private updateDataset(records: BroilerRecord[]): void {
     this.records = records;
     this.calculatedRecords = this.metricsService.calculateRecords(records);
+    this.filteredRecords = [...this.calculatedRecords];
     this.kpis = this.metricsService.calculateKpis(this.calculatedRecords);
+  }
+
+  private applyFilters(): void {
+    const query = this.filters.busqueda.trim().toLowerCase();
+
+    this.filteredRecords = this.calculatedRecords
+      .filter((record) => (this.filters.lote === 'all' ? true : record.lote === this.filters.lote))
+      .filter((record) => (this.filters.galpon === 'all' ? true : record.galpon === this.filters.galpon))
+      .filter((record) => (this.filters.estado_alerta === 'all' ? true : record.estado_alerta === this.filters.estado_alerta))
+      .filter((record) => (this.filters.fechaInicio ? record.fecha >= this.filters.fechaInicio : true))
+      .filter((record) => (this.filters.fechaFin ? record.fecha <= this.filters.fechaFin : true))
+      .filter((record) => {
+        if (!query) {
+          return true;
+        }
+
+        return record.lote.toLowerCase().includes(query) || record.galpon.toLowerCase().includes(query);
+      })
+      .sort((a, b) => b.margen_porcentaje - a.margen_porcentaje);
+
+    this.kpis = this.metricsService.calculateKpis(this.filteredRecords);
   }
 }
