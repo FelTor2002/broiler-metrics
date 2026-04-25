@@ -1,4 +1,24 @@
-﻿p {
-  margin: 0;
-  color: #9aaccc;
+﻿.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.kpi-card {
+  border: 1px solid rgba(162, 184, 219, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem;
+  background: linear-gradient(160deg, rgba(23, 35, 54, 0.95), rgba(14, 21, 35, 0.95));
+}
+
+.kpi-card span {
+  display: block;
+  font-size: 0.78rem;
+  color: #8ba9da;
+  margin-bottom: 0.35rem;
+}
+
+.kpi-card strong {
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
 }
