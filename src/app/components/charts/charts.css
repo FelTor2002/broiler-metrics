@@ -41,3 +41,13 @@
     grid-column: auto;
   }
 }
+
+@media (max-width: 520px) {
+  .canvas-wrap {
+    height: 210px;
+  }
+
+  .canvas-wrap-small {
+    height: 230px;
+  }
+}

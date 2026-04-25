@@ -109,3 +109,10 @@ p {
     font-size: 0.78rem;
   }
 }
+
+@media (max-width: 420px) {
+  .upload-actions {
+    grid-template-columns: 1fr;
+  }
+}
+

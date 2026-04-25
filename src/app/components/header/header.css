@@ -42,3 +42,15 @@ button {
 button.active {
   background: rgba(76, 124, 245, 0.45);
 }
+
+@media (max-width: 480px) {
+  .header {
+    width: 95vw;
+    padding-top: 1rem;
+  }
+
+  .language-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+}
