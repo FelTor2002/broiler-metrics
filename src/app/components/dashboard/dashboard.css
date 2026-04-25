@@ -29,4 +29,45 @@
   border: 1px solid rgba(156, 173, 204, 0.22);
   border-radius: 16px;
   padding: 1rem;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-main {
+    width: min(960px, 94vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    width: 94vw;
+    gap: 0.8rem;
+    padding-top: 0.8rem;
+  }
+
+  .dashboard-upload,
+  .dashboard-filters,
+  .dashboard-kpis,
+  .dashboard-alerts,
+  .dashboard-charts,
+  .dashboard-table {
+    border-radius: 14px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboard-main {
+    width: 95vw;
+  }
+
+  .dashboard-upload,
+  .dashboard-filters,
+  .dashboard-kpis,
+  .dashboard-alerts,
+  .dashboard-charts,
+  .dashboard-table {
+    padding: 0.7rem;
+    border-radius: 12px;
+  }
 }
