@@ -86,8 +86,26 @@ p {
   border-bottom: 1px solid rgba(155, 173, 205, 0.2);
   padding: 0.45rem 0.5rem;
   text-align: left;
+  white-space: nowrap;
 }
 
 .preview-table th {
   color: #8fb4ff;
+}
+
+@media (max-width: 640px) {
+  .upload-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .preview-table {
+    font-size: 0.78rem;
+  }
 }
