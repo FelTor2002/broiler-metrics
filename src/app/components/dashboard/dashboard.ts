@@ -58,15 +58,18 @@ export class Dashboard {
   }
 
   async onFileSelected(file: File): Promise<void> {
+    const startedAt = performance.now();
     this.loading = true;
     this.errorMessage = '';
     this.successMessage = '';
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     try {
       const records = await this.excelService.parseExcel(file);
       this.updateDataset(records);
       this.selectedFileName = file.name;
-      this.successMessage = this.t('upload.success', { count: this.records.length });
+      const elapsedMs = Math.round(performance.now() - startedAt);
+      this.successMessage = `${this.t('upload.success', { count: this.records.length })} (${elapsedMs} ms)`;
     } catch (error) {
       this.records = [];
       this.calculatedRecords = [];

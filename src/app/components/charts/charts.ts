@@ -23,6 +23,7 @@ export class Charts implements OnChanges {
   lineOptions: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: false,
     plugins: { legend: { labels: { color: '#dbe6ff' } } },
     scales: {
       x: { ticks: { color: '#9db3df' }, grid: { color: 'rgba(157, 179, 223, 0.16)' } },
@@ -33,6 +34,7 @@ export class Charts implements OnChanges {
   barOptions: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: false,
     plugins: { legend: { labels: { color: '#dbe6ff' } } },
     scales: {
       x: { ticks: { color: '#9db3df' }, grid: { color: 'rgba(157, 179, 223, 0.16)' } },
@@ -43,6 +45,7 @@ export class Charts implements OnChanges {
   doughnutOptions: ChartOptions<'doughnut'> = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: false,
     plugins: {
       legend: {
         position: 'bottom',
