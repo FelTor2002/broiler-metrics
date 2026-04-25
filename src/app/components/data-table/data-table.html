@@ -2,13 +2,13 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Lote</th>
-        <th>Galpón</th>
-        <th>FCR</th>
-        <th>Margen %</th>
-        <th>Utilidad</th>
-        <th>Estado</th>
+        <th>{{ t('table.rank') }}</th>
+        <th>{{ t('table.lot') }}</th>
+        <th>{{ t('table.shed') }}</th>
+        <th>{{ t('table.fcr') }}</th>
+        <th>{{ t('table.margin') }}</th>
+        <th>{{ t('table.profit') }}</th>
+        <th>{{ t('table.status') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
           <td>{{ record.utilidad_estimada | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
           <td>
             <span class="state" [class.state-alert]="record.estado_alerta === 'alert'" [class.state-critical]="record.estado_alerta === 'critical'">
-              {{ record.estado_alerta }}
+              {{ statusLabel(record.estado_alerta) }}
             </span>
           </td>
         </tr>

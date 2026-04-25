@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .header h1 {
@@ -18,10 +19,26 @@
   color: #9aaccc;
 }
 
-.language-pill {
+.language-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   border-radius: 999px;
   border: 1px solid rgba(164, 179, 209, 0.3);
-  padding: 0.35rem 0.8rem;
+  padding: 0.3rem 0.5rem;
   color: #c3d7ff;
   font-weight: 600;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  background: transparent;
+  color: #c3d7ff;
+  cursor: pointer;
+}
+
+button.active {
+  background: rgba(76, 124, 245, 0.45);
 }

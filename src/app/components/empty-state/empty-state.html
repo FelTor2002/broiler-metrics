@@ -1,5 +1,5 @@
 ﻿<div class="empty-state">
-  <h3>No data loaded yet</h3>
-  <p>Upload an Excel file to generate broiler KPIs, alerts and visual analytics.</p>
-  <button type="button" (click)="loadDemo.emit()">Load demo data</button>
+  <h3>{{ t('empty.title') }}</h3>
+  <p>{{ t('empty.description') }}</p>
+  <button type="button" (click)="loadDemo.emit()">{{ t('empty.cta') }}</button>
 </div>

@@ -11,6 +11,7 @@ import { Header } from '../header/header';
 import { KpiCards } from '../kpi-cards/kpi-cards';
 import { BroilerRecord, CalculatedBroilerRecord, DashboardFilters, DashboardKpis } from '../../models/broiler.models';
 import { ExcelService } from '../../services/excel.service';
+import { LanguageService } from '../../services/language.service';
 import { MetricsService } from '../../services/metrics.service';
 
 @Component({
@@ -49,6 +50,7 @@ export class Dashboard {
   constructor(
     private readonly excelService: ExcelService,
     private readonly metricsService: MetricsService,
+    private readonly languageService: LanguageService,
   ) {}
 
   get hasData(): boolean {
@@ -64,13 +66,13 @@ export class Dashboard {
       const records = await this.excelService.parseExcel(file);
       this.updateDataset(records);
       this.selectedFileName = file.name;
-      this.successMessage = `Loaded ${this.records.length} records successfully.`;
+      this.successMessage = this.t('upload.success', { count: this.records.length });
     } catch (error) {
       this.records = [];
       this.calculatedRecords = [];
       this.filteredRecords = [];
       this.selectedFileName = '';
-      this.errorMessage = error instanceof Error ? error.message : 'Unknown Excel parsing error.';
+      this.errorMessage = this.mapError(error);
     } finally {
       this.loading = false;
     }
@@ -80,7 +82,7 @@ export class Dashboard {
     this.updateDataset(this.excelService.loadDemoData());
     this.selectedFileName = 'demo-broiler-data';
     this.errorMessage = '';
-    this.successMessage = `Loaded ${this.records.length} demo records.`;
+    this.successMessage = this.t('upload.successDemo', { count: this.records.length });
   }
 
   onClearData(): void {
@@ -127,5 +129,27 @@ export class Dashboard {
       .sort((a, b) => b.margen_porcentaje - a.margen_porcentaje);
 
     this.kpis = this.metricsService.calculateKpis(this.filteredRecords);
+  }
+
+  private t(key: string, params: Record<string, string | number> = {}): string {
+    return this.languageService.translate(key, params);
+  }
+
+  private mapError(error: unknown): string {
+    if (!(error instanceof Error)) {
+      return 'Unexpected error.';
+    }
+
+    const [code, payload] = error.message.split('|');
+
+    if (code === 'upload.error.columns') {
+      return this.t(code, { missing: payload ?? '-' });
+    }
+
+    if (code === 'upload.error.invalidData') {
+      return this.t(code, { rows: payload ?? '-' });
+    }
+
+    return this.t(code);
   }
 }

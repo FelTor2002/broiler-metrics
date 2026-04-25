@@ -1,17 +1,17 @@
 ﻿<div class="upload-header">
   <div>
-    <h2>Excel Upload</h2>
-    <p>Upload broiler production records in .xlsx or .xls format.</p>
+    <h2>{{ t('upload.title') }}</h2>
+    <p>{{ t('upload.description') }}</p>
   </div>
 
   <div class="upload-actions">
     <label class="button button-primary" for="excelFileInput">
-      {{ selectedFileName ? 'Change file' : 'Select file' }}
+      {{ selectedFileName ? t('upload.change') : t('upload.select') }}
     </label>
-    <button class="button" type="button" (click)="loadDemo.emit()">Load demo data</button>
-    <button class="button" type="button" (click)="downloadTemplate.emit()">Download template</button>
+    <button class="button" type="button" (click)="loadDemo.emit()">{{ t('upload.demo') }}</button>
+    <button class="button" type="button" (click)="downloadTemplate.emit()">{{ t('upload.template') }}</button>
     @if (selectedFileName || previewRecords.length) {
-      <button class="button button-danger" type="button" (click)="clearData.emit()">Clear</button>
+      <button class="button button-danger" type="button" (click)="clearData.emit()">{{ t('upload.clear') }}</button>
     }
   </div>
 </div>
@@ -19,7 +19,7 @@
 <input id="excelFileInput" type="file" accept=".xlsx,.xls" (change)="onFileChange($event)" hidden />
 
 @if (loading) {
-  <p class="status status-loading">Loading file...</p>
+  <p class="status status-loading">{{ t('common.loading') }}</p>
 }
 
 @if (errorMessage) {
@@ -31,7 +31,7 @@
 }
 
 @if (selectedFileName) {
-  <p class="file-name">Loaded file: <strong>{{ selectedFileName }}</strong></p>
+  <p class="file-name">{{ t('upload.loadedFile') }} <strong>{{ selectedFileName }}</strong></p>
 }
 
 @if (previewRecords.length) {

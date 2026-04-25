@@ -2,6 +2,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalculatedBroilerRecord, DashboardFilters } from '../../models/broiler.models';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-filters',
@@ -24,6 +25,12 @@ export class Filters implements OnChanges {
 
   lotes: string[] = [];
   galpones: string[] = [];
+
+  constructor(private readonly languageService: LanguageService) {}
+
+  t(key: string): string {
+    return this.languageService.translate(key);
+  }
 
   ngOnChanges(): void {
     this.lotes = [...new Set(this.records.map((record) => record.lote))].sort((a, b) => a.localeCompare(b));

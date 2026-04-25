@@ -1,4 +1,5 @@
 ﻿import { Component, EventEmitter, Output } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-empty-state',
@@ -8,4 +9,10 @@
 })
 export class EmptyState {
   @Output() loadDemo = new EventEmitter<void>();
+
+  constructor(private readonly languageService: LanguageService) {}
+
+  t(key: string): string {
+    return this.languageService.translate(key);
+  }
 }
