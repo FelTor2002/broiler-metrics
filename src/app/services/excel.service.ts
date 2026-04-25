@@ -9,10 +9,18 @@ import { safeNumber } from '../utils/math.helpers';
   providedIn: 'root',
 })
 export class ExcelService {
+  private readonly parsedCache = new Map<string, BroilerRecord[]>();
+
   async parseExcel(file: File): Promise<BroilerRecord[]> {
+    const cacheKey = `${file.name}:${file.size}:${file.lastModified}`;
+    const cached = this.parsedCache.get(cacheKey);
+    if (cached) {
+      return structuredClone(cached);
+    }
+
     this.validateFileType(file);
 
-    const workbook = XLSX.read(await file.arrayBuffer(), { type: 'array' });
+    const workbook = XLSX.read(await file.arrayBuffer(), { type: 'array', dense: true, cellDates: true });
     const firstSheetName = workbook.SheetNames[0];
 
     if (!firstSheetName) {
@@ -25,7 +33,7 @@ export class ExcelService {
 
     const rawRows = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet, {
       defval: '',
-      raw: false,
+      raw: true,
     });
 
     const rows = rawRows
@@ -38,6 +46,7 @@ export class ExcelService {
 
     const records = rows.map((row) => this.toRecord(row));
     this.validateRows(records);
+    this.parsedCache.set(cacheKey, structuredClone(records));
 
     return records;
   }
