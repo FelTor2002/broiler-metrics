@@ -72,6 +72,11 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'alerts.summary.normal': 'Normal',
     'alerts.summary.alert': 'Alerta',
     'alerts.summary.critical': 'Crítico',
+    'alerts.tab.all': 'Todos',
+    'alerts.tab.normal': 'Normal',
+    'alerts.tab.alert': 'Alerta',
+    'alerts.tab.critical': 'Crítico',
+    'alerts.showMore': 'Ver más alertas',
     'alerts.empty': 'No hay alertas para mostrar.',
     'alerts.ok': 'Operación en rango esperado.',
 
@@ -151,6 +156,11 @@ export const translations: Record<LanguageCode, TranslationMap> = {
     'alerts.summary.normal': 'Normal',
     'alerts.summary.alert': 'Alert',
     'alerts.summary.critical': 'Critical',
+    'alerts.tab.all': 'All',
+    'alerts.tab.normal': 'Normal',
+    'alerts.tab.alert': 'Alert',
+    'alerts.tab.critical': 'Critical',
+    'alerts.showMore': 'Show more alerts',
     'alerts.empty': 'No alerts to display.',
     'alerts.ok': 'Operation within expected range.',
 
